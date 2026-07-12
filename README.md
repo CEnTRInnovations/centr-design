@@ -11,11 +11,20 @@ is now the canonical, live source** — `_brand.yml` is historical origin materi
 
 ## What's in here
 
-- `tailwind.config.ts` — a Tailwind preset exporting the `canon.*` color palette and the suite's
+- `tailwind.config.ts` — a Tailwind preset exporting the `canon.*` color palette, the suite's
   actual font stack (Alegreya Sans / Alegreya / JetBrains Mono — **not** Inter, which never
-  shipped anywhere despite an earlier config claiming it did).
+  shipped anywhere despite an earlier config claiming it did), a `fontSize` type scale
+  (`display`/`h2`/`h3`/`lede`/`body`/`meta`/`eyebrow`, promoted from Apiary Hive), a small
+  `borderRadius` scale (`control`/`card`/`panel`), and `boxShadow.field`.
 - `icons.ts` — the Material Symbols (Outlined) stylesheet URL and class-name convention used
   for all iconography across the suite.
+
+Consuming apps are free to add their own `theme.extend` on top of this preset for anything
+app-specific (CANON, for example, keeps its own `borderRadius.badge`/`.button`, a larger
+`fontSize` label/title/display scale, and `spacing` tokens local to `apps/web/tailwind.config.ts`
+rather than promoting them here) — but if a token or scale is genuinely shared by two or more
+tools, promote it into this repo rather than letting copies drift, the way CANON's and Apiary
+Hive's independently-built copies did before 2026-07-12.
 
 ## Installing in a consuming app
 
@@ -69,8 +78,18 @@ the setup cost — see the discussion in `centr-seek`'s
 
 ## Consuming tools
 
-- **CEnTR\*CANON** (`centrcanonapp-next`) — `apps/web`, the original source these tokens were
-  extracted from.
+- **CEnTR\*CANON** (`centrcanonapp-next`) — `apps/web`, the original source the color/font
+  tokens were extracted from.
+- **Apiary Hive** (`apiary-hive`) — `frontend`, the original source of the `fontSize` scale,
+  `borderRadius.control`/`.card`, and `boxShadow.field`. Its own `packages/design` copy
+  (which had diverged slightly — different `sage`/`plum` hex values, plus `paper-bright`/
+  `paper-canvas` tones this repo didn't have yet) was reconciled into this repo on 2026-07-12
+  and is now retired.
 - **CEnTR\*SEEK** (`centr-seek`) — adopting this preset as part of its design-system handoff
   item; see that repo's `docs/handoff/HANDOFF-dockerize-design-do-auth0.md` §2.
-# centr-design
+- **Understory** — not yet wired to this package; no Tailwind or design-system dependency
+  present as of 2026-07-12. Would follow the same `presets` pattern as CANON when adopted.
+- **Apiary** — architecturally can't consume this as an npm/git dependency (it's a single
+  `index.html` with no build step, by design). If visual alignment is wanted here, the
+  realistic path is a compiled CSS custom-properties artifact served from this repo via a CDN
+  (e.g. jsDelivr against a git tag), not an npm install.

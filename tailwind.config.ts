@@ -4,6 +4,8 @@ export const canonColors = {
   // Neutral surface tokens (from _brand.yml defaults)
   foreground:  '#1F1A14',
   paper:       '#F1EAD9',
+  'paper-bright': '#FAF6EE',  // brighter card/surface tone — from Apiary Hive, absorbed 2026-07-12
+  'paper-canvas': '#EAE0CA',  // canvas/inset surface tone — from Apiary Hive, absorbed 2026-07-12
   sand:        '#E8DFC9',
   border:      '#D8CDB2',
   muted:       '#8A7F6B',
@@ -54,6 +56,32 @@ const config: Partial<Config> = {
         sans:  ['Alegreya Sans', 'sans-serif'],
         serif: ['Alegreya', 'Georgia', 'serif'],
         mono:  ['JetBrains Mono', 'monospace'],
+      },
+      // Heading/body type scale — promoted from Apiary Hive's local package 2026-07-12
+      // (the first consumer to actually build one out). Distinct key names from CANON's
+      // own local label-*/title-*/display-* scale (kept app-local in apps/web/tailwind.config.ts),
+      // so this is purely additive — it does not collide with or replace CANON's scale.
+      fontSize: {
+        display: ['3rem',   { lineHeight: '0.98' }],
+        h2:      ['1.8rem', { lineHeight: '1.2' }],
+        h3:      ['1.32rem',{ lineHeight: '1.2' }],
+        lede:    ['1.2rem', { lineHeight: '1.4' }],
+        body:    ['1rem',   { lineHeight: '1.5' }],
+        meta:    ['0.8rem', { lineHeight: '1.4' }],
+        eyebrow: ['0.7rem', { lineHeight: '1' }],
+      },
+      // Promoted from Apiary Hive's local package 2026-07-12. `card` differs in intent from
+      // CANON's own local `rounded-card` (12px, in apps/web/tailwind.config.ts) — CANON's local
+      // override wins for CANON's own build, so this doesn't change CANON's rendering; it just
+      // gives Apiary Hive (which had no local override) the same value it already had.
+      borderRadius: {
+        control: '3px',
+        card:    '6px',
+        panel:   '10px',
+      },
+      // Promoted from Apiary Hive's local package 2026-07-12.
+      boxShadow: {
+        field: '0 2px 12px rgba(62,59,53,0.10), 0 1px 3px rgba(62,59,53,0.07)',
       },
     },
   },
