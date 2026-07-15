@@ -18,7 +18,8 @@ export const canonColors = {
   navy:        '#1E325C',
   forest:      '#3B6B35',
   signal:      '#8E2A2A',
-  clay:        '#B8754A',
+  clay:        '#B8754A',   // decorative/large-accent only — fails AA as text on sand/parchment below ~18pt bold; use clay-ink for readable text
+  'clay-ink':  '#885535',   // darker clay text — AA-passing on sand/parchment (4.65:1 / 5.44:1); #B8754A stays for decorative/large accents
   gold:        '#C49A3A',
 
   // Earthtone palette (cluster coloring in visualizations)

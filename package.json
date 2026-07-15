@@ -1,6 +1,6 @@
 {
   "name": "@centrinnovations/design",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Shared design tokens (Tailwind preset), typography, and icon conventions for the CEnTR* System tool suite.",
   "main": "./tailwind.config.ts",
